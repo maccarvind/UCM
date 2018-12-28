@@ -1,0 +1,234 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="UCMLogged.master.cs" Inherits="UCM.UCMLogged" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+
+    <!-- Favicon-->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Bootstrap Select Css -->
+    <link href="/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+
+    <!-- Waves Effect Css -->
+    <link href="/plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="/css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="/css/themes/all-themes.css" rel="stylesheet" />
+
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="theme-teal">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-teal">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon">
+            <i class="material-icons">search</i>
+        </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search">
+            <i class="material-icons">close</i>
+        </div>
+    </div>
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="widgets/../../index.html"><strong>UCM</strong> Control </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+
+
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            <span class="username"><% =LoggedInUser.DisplayName %></span>
+                            <i class="material-icons">perm_identity</i>
+
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">Profile</li>
+                            <li class="body">
+                                <ul class="menu">
+                                    <li>
+                                        <a href="/ChangePassword.aspx">
+                                            <div class="icon-circle bg-light-green">
+                                                <i class="material-icons">settings</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>Change Password</h4>
+
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Logout.aspx">
+                                            <div class="icon-circle bg-red">
+                                                <i class="material-icons">power_settings_new</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>Logout</h4>
+
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li <% =( (Request.Url.AbsolutePath.ToLower().Contains("/index.aspx") ||
+                                Request.Url.AbsolutePath.ToLower().Contains("/changepassword.aspx")) ? "class='active'" : string.Empty) %>>
+                        <a href="/index.aspx">
+                            <i class="material-icons">home</i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li <% =(Request.Url.AbsolutePath.ToLower().Contains("/warehouse/") ? "class='active'" : string.Empty) %>>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">layers</i>
+                            <span>Warehouse</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li <% Response.Write(Request.Url.AbsolutePath.ToLower().Contains("/warehouse/sorts.aspx") ? "class='active'" : string.Empty); %>>
+                                <a href="/Warehouse/Sorts.aspx">Sorts</a>
+                            </li>
+                            <li <% Response.Write(Request.Url.AbsolutePath.ToLower().Contains("/warehouse/whinwardmaster.aspx") ? "class='active'" : string.Empty); %>>
+                                <a href="/Warehouse/WHInwardMaster.aspx">Inward Master</a>
+                            </li>
+                            <li <% Response.Write(Request.Url.AbsolutePath.ToLower().Contains("/warehouse/whpiececr.aspx") ? "class='active'" : string.Empty); %>>
+                                <a href="/Warehouse/WHPieceCR.aspx">Piece - CR</a>
+                            </li>
+                            <li <% Response.Write(Request.Url.AbsolutePath.ToLower().Contains("/warehouse/whpacking.aspx") ? "class='active'" : string.Empty); %>>
+                                <a href="/Warehouse/WHPacking.aspx">Packing</a>
+                            </li>
+                            <li <% Response.Write(Request.Url.AbsolutePath.ToLower().Contains("/warehouse/whdeliverypreplan.aspx") ? "class='active'" : string.Empty); %>>
+                                <a href="/Warehouse/WhDeliveryPrePlan.aspx">Delivery Pre Plan</a>
+                            </li>
+                            <li <% Response.Write(Request.Url.AbsolutePath.ToLower().Contains("/warehouse/whstockinhand.aspx") ? "class='active'" : string.Empty); %>>
+                                <a href="/Warehouse/WHStockInHand.aspx">Stock In Hand</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li <% =(Request.Url.AbsolutePath.ToLower().Contains("/finance/") ? "class='active'" : string.Empty) %>>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">storage</i>
+                            <span>Finance</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li <% Response.Write(Request.Url.AbsolutePath.ToLower().Contains("/finance/fnpettycashentry.aspx") ? "class='active'" : string.Empty); %>>
+                                <a href="/Finance/FNPettyCashEntry.aspx">Petty Cash Entry</a>
+                            </li>
+                            <li <% Response.Write(Request.Url.AbsolutePath.ToLower().Contains("/finance/fnpettycashsearch.aspx") ? "class='active'" : string.Empty); %>>
+                                <a href="/Finance/FNPettyCashSearch.aspx">Petty Cash Search</a>
+                            </li>
+                             <li <% Response.Write(Request.Url.AbsolutePath.ToLower().Contains("/finance/fnpettycashreport.aspx") ? "class='active'" : string.Empty); %>>
+                                <a href="/Finance/FNPettyCashReport.aspx">Petty Cash Report</a>
+                            </li>
+                             <li <% Response.Write(Request.Url.AbsolutePath.ToLower().Contains("/finance/fnexpenseconfigure.aspx") ? "class='active'" : string.Empty); %>>
+                                <a href="/Finance/FNExpenseConfigure.aspx">Expense Configure</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- #Menu -->
+
+        </aside>
+        <!-- #END# Left Sidebar -->
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <asp:ContentPlaceHolder ID="BodyContent" runat="server"></asp:ContentPlaceHolder>
+        </div>
+    </section>
+
+    <!-- Jquery Core Js -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="/plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="/plugins/node-waves/waves.js"></script>
+
+    <!-- Moment Plugin Js -->
+    <script src="/plugins/momentjs/moment.js"></script>
+
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+
+    <!-- Custom Js -->
+    <script src="/js/admin.js"></script>
+
+    <!-- Demo Js -->
+    <script src="/js/demo.js"></script>
+    <asp:ContentPlaceHolder ID="ScriptContent" runat="server"></asp:ContentPlaceHolder>
+
+</body>
+</html>
