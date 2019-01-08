@@ -62,17 +62,7 @@
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <div class="search-icon">
-            <i class="material-icons">search</i>
-        </div>
-        <input type="text" placeholder="START TYPING...">
-        <div class="close-search">
-            <i class="material-icons">close</i>
-        </div>
-    </div>
-    <!-- #END# Search Bar -->
+    
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
@@ -179,10 +169,10 @@
                             <li <% Response.Write(Request.Url.AbsolutePath.ToLower().Contains("/finance/fnpettycashsearch.aspx") ? "class='active'" : string.Empty); %>>
                                 <a href="/Finance/FNPettyCashSearch.aspx">Petty Cash Search</a>
                             </li>
-                             <li <% Response.Write(Request.Url.AbsolutePath.ToLower().Contains("/finance/fnpettycashreport.aspx") ? "class='active'" : string.Empty); %>>
+                            <li <% Response.Write(Request.Url.AbsolutePath.ToLower().Contains("/finance/fnpettycashreport.aspx") ? "class='active'" : string.Empty); %>>
                                 <a href="/Finance/FNPettyCashReport.aspx">Petty Cash Report</a>
                             </li>
-                             <li <% Response.Write(Request.Url.AbsolutePath.ToLower().Contains("/finance/fnexpenseconfigure.aspx") ? "class='active'" : string.Empty); %>>
+                            <li <% Response.Write(Request.Url.AbsolutePath.ToLower().Contains("/finance/fnexpenseconfigure.aspx") ? "class='active'" : string.Empty); %>>
                                 <a href="/Finance/FNExpenseConfigure.aspx">Expense Configure</a>
                             </li>
                         </ul>
@@ -191,7 +181,13 @@
                 </ul>
             </div>
             <!-- #Menu -->
-
+             <!-- Footer -->
+            <div class="legal">
+                <div class="copyright">
+                    &copy; 2016 - 2017 <a href="javascript:void(0);">UCM Control</a>.
+                </div>
+            </div>
+            <!-- #Footer -->
         </aside>
         <!-- #END# Left Sidebar -->
     </section>

@@ -190,18 +190,17 @@ namespace UCMHelper
         }
 
 
-        public DataTable GetExpenseHeads()
+        public DataTable GetExpenseMasterByType(string expType)
         {
             DataSet retDs = new DataSet();
 
             Database db = DatabaseFactory.CreateDatabase();
             DbCommand cmd = db.GetStoredProcCommand("sp_FNExpenseMasterOperation");
 
-            db.AddInParameter(cmd, "Function", DbType.String, "GETHEAD");
+            db.AddInParameter(cmd, "Function", DbType.String, "GETBYTYPE");
             db.AddInParameter(cmd, "ID", DbType.Int32, default(int));
-            db.AddInParameter(cmd, "ExpType", DbType.String, string.Empty);
+            db.AddInParameter(cmd, "ExpType", DbType.String, expType);
             db.AddInParameter(cmd, "ExpName", DbType.String, string.Empty);
-            db.AddInParameter(cmd, "ParentID", DbType.Int32, default(int));
             db.AddOutParameter(cmd, "retVal", DbType.String, 100);
 
             retDs = db.ExecuteDataSet(cmd);
@@ -213,30 +212,7 @@ namespace UCMHelper
                 return new DataTable();
         }
 
-        public DataTable GetExpenseNature(int headId)
-        {
-            DataSet retDs = new DataSet();
-
-            Database db = DatabaseFactory.CreateDatabase();
-            DbCommand cmd = db.GetStoredProcCommand("sp_FNExpenseMasterOperation");
-
-            db.AddInParameter(cmd, "Function", DbType.String, "GETNATURE");
-            db.AddInParameter(cmd, "ID", DbType.Int32, default(int));
-            db.AddInParameter(cmd, "ExpType", DbType.String, string.Empty);
-            db.AddInParameter(cmd, "ExpName", DbType.String, string.Empty);
-            db.AddInParameter(cmd, "ParentID", DbType.Int32, headId);
-            db.AddOutParameter(cmd, "retVal", DbType.String, 100);
-
-            retDs = db.ExecuteDataSet(cmd);
-
-            if (retDs.Tables != null && retDs.Tables.Count > 0)
-                return retDs.Tables[0];
-            else
-
-                return new DataTable();
-        }
-
-        public DataTable GetExpenseByID(int id)
+        public DataTable GetExpenseMasterByID(int id)
         {
             DataSet retDs = new DataSet();
 
@@ -247,7 +223,6 @@ namespace UCMHelper
             db.AddInParameter(cmd, "ID", DbType.Int32, id);
             db.AddInParameter(cmd, "ExpType", DbType.String, string.Empty);
             db.AddInParameter(cmd, "ExpName", DbType.String, string.Empty);
-            db.AddInParameter(cmd, "ParentID", DbType.Int32, default(int));
             db.AddOutParameter(cmd, "retVal", DbType.String, 100);
 
             retDs = db.ExecuteDataSet(cmd);
@@ -259,7 +234,7 @@ namespace UCMHelper
                 return new DataTable();
         }
 
-        public void AddUpdateExpense(string function, int id, string expType, string expName, int headId, ref string retParamVal)
+        public void AddUpdateExpense(string function, int id, string expType, string expName, ref string retParamVal)
         {
             Database db = DatabaseFactory.CreateDatabase();
             DbCommand cmd = db.GetStoredProcCommand("sp_FNExpenseMasterOperation");
@@ -268,7 +243,6 @@ namespace UCMHelper
             db.AddInParameter(cmd, "ID", DbType.Int32, id);
             db.AddInParameter(cmd, "ExpType", DbType.String, expType);
             db.AddInParameter(cmd, "ExpName", DbType.String, expName);
-            db.AddInParameter(cmd, "ParentID", DbType.Int32, headId);
             db.AddOutParameter(cmd, "retVal", DbType.String, 100);
 
             db.ExecuteNonQuery(cmd);

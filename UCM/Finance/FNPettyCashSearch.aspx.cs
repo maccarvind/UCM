@@ -33,33 +33,20 @@ namespace UCM.Finance
             dropCompany.DataBind();
             dropCompany.Items.Insert(0, new ListItem("- Company -", ""));
 
-            dropHeadOfExp.DataSource = finOps.GetExpenseHeads();
+            dropHeadOfExp.DataSource = finOps.GetExpenseMasterByType("HEAD");
             dropHeadOfExp.DataValueField = "ID";
             dropHeadOfExp.DataTextField = "ExpName";
             dropHeadOfExp.DataBind();
             dropHeadOfExp.Items.Insert(0, new ListItem("- Heads -", ""));
 
-            dropHeadOfExp_SelectedIndexChanged(new object(), new EventArgs());
+            dropNatureOfExp.DataSource = finOps.GetExpenseMasterByType("NATURE");
+            dropNatureOfExp.DataValueField = "ID";
+            dropNatureOfExp.DataTextField = "ExpName";
+            dropNatureOfExp.DataBind();
+            dropNatureOfExp.Items.Insert(0, new ListItem("- Nature -", ""));
+
             butApprove.Visible = false;
 
-        }
-
-        protected void dropHeadOfExp_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UCMFinance finOps = new UCMFinance();
-
-            dropNatureOfExp.Items.Clear();
-
-            if (dropHeadOfExp.SelectedValue != string.Empty)
-            {
-                DataTable dtExpNature = finOps.GetExpenseNature(DataFormatter.SafeInt(dropHeadOfExp.SelectedValue));
-                dropNatureOfExp.DataSource = dtExpNature;
-                dropNatureOfExp.DataValueField = "ID";
-                dropNatureOfExp.DataTextField = "ExpName";
-                dropNatureOfExp.DataBind();
-            }
-
-            dropNatureOfExp.Items.Insert(0, new ListItem("- Nature -", ""));
         }
 
         protected void butSearch_Click(object sender, EventArgs e)

@@ -8075,3 +8075,11 @@ html.ie11 .bs-searchbox .form-control {
     /*margin-top: 10px;*/
 }
 
+.fn-pettycash-report-data {
+    text-align: right;
+}
+
+.fn-pettycash-report-total {
+    text-align: right;
+    font-weight: bold;
+}

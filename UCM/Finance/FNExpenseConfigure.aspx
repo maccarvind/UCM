@@ -37,7 +37,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <asp:DropDownList ID="dropHeadExpense" runat="server" CssClass="form-control show-tick" OnSelectedIndexChanged="dropHeadExpense_SelectedIndexChanged" AutoPostBack="true">
+                                                <asp:DropDownList ID="dropExpType" runat="server" CssClass="form-control show-tick" OnSelectedIndexChanged="dropExpType_SelectedIndexChanged" AutoPostBack="true">
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
@@ -45,7 +45,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="form-line">
-                                                <asp:TextBox ID="txtNatureOfExp" runat="server" CssClass="form-control"></asp:TextBox>
+                                                <asp:TextBox ID="txtExpMasterName" runat="server" CssClass="form-control"></asp:TextBox>
                                                 <label class="form-label">Exp. Name</label>
                                             </div>
                                         </div>
@@ -53,7 +53,7 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <asp:HiddenField ID="hidExpID" runat="server" />
-                                            <asp:Button ID="butAddNatureOfExp" runat="server" Text="Add Exp. Detail" CssClass="btn bg-teal waves-effect" OnClick="butAddNatureOfExp_Click" />
+                                            <asp:Button ID="butAddExpenseMaster" runat="server" Text="Add Exp. Detail" CssClass="btn bg-teal waves-effect" OnClick="butAddExpenseMaster_Click" />
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
@@ -70,11 +70,11 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="body">
-                                <h2 class="card-inside-title">Head of Expense: 
+                                <h2 class="card-inside-title">Expense Type: 
                                     <asp:Label ID="lblSearchResult" runat="server"></asp:Label></h2>
                                 <div class="row clearfix">
                                     <div class="col-sm-12">
-                                        <asp:GridView ID="gridNatureOfExp" runat="server" DataKeyNames="ID" AutoGenerateColumns="false"
+                                        <asp:GridView ID="gridExpMaster" runat="server" DataKeyNames="ID" AutoGenerateColumns="false"
                                             CssClass="table table-bordered table-striped table-hover table-condensed">
                                             <Columns>
                                                 <asp:BoundField HeaderText="Exp. Name" DataField="ExpName" />

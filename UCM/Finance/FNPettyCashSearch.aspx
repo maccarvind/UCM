@@ -61,8 +61,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <asp:DropDownList ID="dropHeadOfExp" runat="server" CssClass="form-control" AutoPostBack="true"
-                                                    OnSelectedIndexChanged="dropHeadOfExp_SelectedIndexChanged">
+                                                <asp:DropDownList ID="dropHeadOfExp" runat="server" CssClass="form-control">
                                                 </asp:DropDownList>
                                             </div>
                                         </div>

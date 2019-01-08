@@ -22,14 +22,16 @@ namespace UCM.Finance
 
         private void initializeForm()
         {
-            UCMFinance finOps = new UCMFinance();
+            //UCMFinance finOps = new UCMFinance();
 
-            dropHeadExpense.DataSource = finOps.GetExpenseHeads();
-            dropHeadExpense.DataValueField = "ID";
-            dropHeadExpense.DataTextField = "ExpName";
-            dropHeadExpense.DataBind();
+            //dropHeadExpense.DataSource = finOps.GetExpenseHeads();
+            //dropHeadExpense.DataValueField = "ID";
+            //dropHeadExpense.DataTextField = "ExpName";
+            //dropHeadExpense.DataBind();
 
-            dropHeadExpense.Items.Insert(0, new ListItem("- Select -", ""));
+            dropExpType.Items.Add(new ListItem("HEAD", "HEAD"));
+            dropExpType.Items.Add(new ListItem("NATURE", "NATURE"));
+            dropExpType.Items.Insert(0, new ListItem("- Select -", ""));
         }
 
         protected void lnkEdit_Click(object sender, EventArgs e)
@@ -41,22 +43,22 @@ namespace UCM.Finance
             {
                 UCMFinance finOps = new UCMFinance();
 
-                DataTable dtExpNature = finOps.GetExpenseByID(DataFormatter.SafeInt(lnkButton.CommandArgument));
+                DataTable dtExpNature = finOps.GetExpenseMasterByID(DataFormatter.SafeInt(lnkButton.CommandArgument));
 
-                txtNatureOfExp.Text = dtExpNature.Rows[0]["ExpName"].ToString();
+                txtExpMasterName.Text = dtExpNature.Rows[0]["ExpName"].ToString();
                 hidExpID.Value = dtExpNature.Rows[0]["ID"].ToString();
                 lblMessage.Text = string.Empty;
 
-                butAddNatureOfExp.Text = "Update Exp. Detail";
+                butAddExpenseMaster.Text = "Update Exp. Detail";
 
             }
 
         }
 
-        protected void butAddNatureOfExp_Click(object sender, EventArgs e)
+        protected void butAddExpenseMaster_Click(object sender, EventArgs e)
         {
-            if ((txtNatureOfExp.Text.Trim() == string.Empty)
-                || (dropHeadExpense.SelectedValue == string.Empty))
+            if ((txtExpMasterName.Text.Trim() == string.Empty)
+                || (dropExpType.SelectedValue == string.Empty))
             {
                 lblMessage.Text = "Kindly fill all the details.";
                 return;
@@ -67,13 +69,13 @@ namespace UCM.Finance
 
             if (DataFormatter.SafeInt(hidExpID.Value) <= 0)
             {
-                finOps.AddUpdateExpense("ADD", default(int), "NATURE", txtNatureOfExp.Text.Trim(), DataFormatter.SafeInt(dropHeadExpense.SelectedValue), ref retVal);
+                finOps.AddUpdateExpense("ADD", default(int), dropExpType.SelectedValue, txtExpMasterName.Text.Trim(),  ref retVal);
 
                 lblMessage.Text = "Expense Details Added Successfully.";
             }
             else
             {
-                finOps.AddUpdateExpense("UPDATE", DataFormatter.SafeInt(hidExpID.Value), "NATURE", txtNatureOfExp.Text.Trim(), DataFormatter.SafeInt(dropHeadExpense.SelectedValue), ref retVal);
+                finOps.AddUpdateExpense("UPDATE", DataFormatter.SafeInt(hidExpID.Value), dropExpType.SelectedValue, txtExpMasterName.Text.Trim(), ref retVal);
 
                 lblMessage.Text = "Expense Details Update Successfully.";
             }
@@ -81,38 +83,39 @@ namespace UCM.Finance
             if (retVal != string.Empty)
                 lblMessage.Text = "Expense Details Already Present.";
             else
-                dropHeadExpense_SelectedIndexChanged(sender, e);
+                dropExpType_SelectedIndexChanged(sender, e);
         }
 
-        protected void dropHeadExpense_SelectedIndexChanged(object sender, EventArgs e)
+
+        protected void dropExpType_SelectedIndexChanged(object sender, EventArgs e)
         {
             UCMFinance finOps = new UCMFinance();
 
-            txtNatureOfExp.Text = hidExpID.Value = string.Empty;
-            butAddNatureOfExp.Text = "Add Exp. Detail";
+            txtExpMasterName.Text =string.Empty;
+            butAddExpenseMaster.Text = "Add Exp. Detail";
 
-            if (dropHeadExpense.SelectedValue != string.Empty)
+            if (dropExpType.SelectedValue != string.Empty)
             {
-                DataTable dtExpNature = finOps.GetExpenseNature(DataFormatter.SafeInt(dropHeadExpense.SelectedValue));
+                DataTable dtExpMaster = finOps.GetExpenseMasterByType(dropExpType.SelectedValue);
 
-                if (dtExpNature.Rows.Count > 0)
+                if (dtExpMaster.Rows.Count > 0)
                 {
-                    gridNatureOfExp.DataSource = finOps.GetExpenseNature(DataFormatter.SafeInt(dropHeadExpense.SelectedValue));
-                    gridNatureOfExp.DataBind();
+                    gridExpMaster.DataSource = dtExpMaster;
+                    gridExpMaster.DataBind();
 
-                    gridNatureOfExp.Visible = true;
-                    lblSearchResult.Text = dropHeadExpense.SelectedItem.Text;
+                    gridExpMaster.Visible = true;
+                    lblSearchResult.Text = dropExpType.SelectedItem.Text;
                 }
                 else
                 {
                     lblSearchResult.Text = "No Entries";
-                    gridNatureOfExp.Visible = false;
+                    gridExpMaster.Visible = false;
                 }
             }
             else
             {
                 lblSearchResult.Text = "No Entries";
-                gridNatureOfExp.Visible = false;
+                gridExpMaster.Visible = false;
             }
 
         }

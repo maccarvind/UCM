@@ -39,33 +39,19 @@ namespace UCM.Finance
             dropCashOutCompany.DataBind();
             dropCashOutCompany.Items.Insert(0, new ListItem("- Company -", ""));
 
-            dropHeadOfExp.DataSource = finOps.GetExpenseHeads();
+            dropHeadOfExp.DataSource = finOps.GetExpenseMasterByType("HEAD");
             dropHeadOfExp.DataValueField = "ID";
             dropHeadOfExp.DataTextField = "ExpName";
             dropHeadOfExp.DataBind();
             dropHeadOfExp.Items.Insert(0, new ListItem("- Exp. Heads -", ""));
 
+            dropNatureOfExp.DataSource = finOps.GetExpenseMasterByType("NATURE"); ;
+            dropNatureOfExp.DataValueField = "ID";
+            dropNatureOfExp.DataTextField = "ExpName";
+            dropNatureOfExp.DataBind();
+            dropNatureOfExp.Items.Insert(0, new ListItem("- Exp. Nature -", ""));
+
         }
-
-        protected void dropHeadOfExp_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UCMFinance finOps = new UCMFinance();
-
-            dropNatureOfExp.Items.Clear();
-
-            if (dropHeadOfExp.SelectedValue != string.Empty)
-            {
-                DataTable dtExpNature = finOps.GetExpenseNature(DataFormatter.SafeInt(dropHeadOfExp.SelectedValue));
-                dropNatureOfExp.DataSource = dtExpNature;
-                dropNatureOfExp.DataValueField = "ID";
-                dropNatureOfExp.DataTextField = "ExpName";
-                dropNatureOfExp.DataBind();
-            }
-
-            dropNatureOfExp.Items.Insert(0, new ListItem("- Exp. Heads -", ""));
-        }
-
-
 
         protected void lnkGetDate_Click(object sender, EventArgs e)
         {
@@ -235,8 +221,6 @@ namespace UCM.Finance
 
                     if (dropHeadOfExp.Items.FindByValue(pCashRw["ExpHeadID"].ToString()) != null)
                         dropHeadOfExp.Items.FindByValue(pCashRw["ExpHeadID"].ToString()).Selected = true;
-
-                    dropHeadOfExp_SelectedIndexChanged(new object(), new EventArgs());
 
                     if (dropNatureOfExp.Items.FindByValue(pCashRw["ExpNatureID"].ToString()) != null)
                         dropNatureOfExp.Items.FindByValue(pCashRw["ExpNatureID"].ToString()).Selected = true;

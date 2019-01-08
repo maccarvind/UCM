@@ -75,37 +75,10 @@
                                         </script>
                                         <h2 class="card-inside-title">Report: 
                                             <asp:Label ID="lblReportMessasge" runat="server" CssClass="right"></asp:Label></h2>
-                                        <asp:GridView ID="gridPettyCashReport" runat="server" DataKeyNames="ID" AutoGenerateColumns="false"
-                                            CssClass="table table-bordered table-striped table-hover table-condensed">
-                                            <Columns>
-                                                <asp:TemplateField HeaderText="Head / Nature">
-                                                    <ItemTemplate>
-                                                        <%# ( (Eval("ExpType").ToString() == "HEAD" || Eval("CrDr").ToString() == "C")
-                                                            ? "<b>"+Eval("ExpName")+"</b>"  
-                                                            : " <i class=\"material-icons\" style=\"vertical-align: middle;\">keyboard_arrow_right</i> " + Eval("ExpName"))%>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Cr" ItemStyle-HorizontalAlign="Right">
-                                                    <ItemTemplate>
-                                                        <%# (Eval("CrDr").ToString() == "C" 
-                                                            ? "<b>" + UCMHelper.DataFormatter.SafeDouble(Eval("Total")).ToString("F") + "</b>"  
-                                                            : "0.00")%>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Dr" ItemStyle-HorizontalAlign="Right">
-                                                    <ItemTemplate>
-                                                        <%# (Eval("CrDr").ToString() == "D" 
-                                                            ? (Eval("ExpType").ToString() == "HEAD" 
-                                                                ?  "<b>" + UCMHelper.DataFormatter.SafeDouble(Eval("Total")).ToString("F")  +"</b>"
-                                                                : UCMHelper.DataFormatter.SafeDouble(Eval("Total")).ToString("F")  + "&nbsp;&nbsp;&nbsp;" )
-                                                            : (Eval("ExpType").ToString() == "HEAD" 
-                                                                ?  "<b>0.00</b>"
-                                                                : "0.00" + "&nbsp;&nbsp;&nbsp;" )
-                                                            )%>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                            </Columns>
-                                        </asp:GridView>
+                                        
+                                        <asp:GridView ID="gridPettyCashReport" runat="server" AutoGenerateColumns="true"
+                                            CssClass="table table-bordered table-striped table-hover table-condensed" OnRowDataBound="gridPettyCashReport_RowDataBound" OnPreRender="gridPettyCashReport_PreRender">
+                                            </asp:GridView>
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="butGenerateReport" EventName="Click" />

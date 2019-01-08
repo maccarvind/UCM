@@ -31,22 +31,22 @@ namespace UCM.Finance {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// dropHeadExpense control.
+        /// dropExpType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropHeadExpense;
+        protected global::System.Web.UI.WebControls.DropDownList dropExpType;
         
         /// <summary>
-        /// txtNatureOfExp control.
+        /// txtExpMasterName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNatureOfExp;
+        protected global::System.Web.UI.WebControls.TextBox txtExpMasterName;
         
         /// <summary>
         /// hidExpID control.
@@ -58,13 +58,13 @@ namespace UCM.Finance {
         protected global::System.Web.UI.WebControls.HiddenField hidExpID;
         
         /// <summary>
-        /// butAddNatureOfExp control.
+        /// butAddExpenseMaster control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button butAddNatureOfExp;
+        protected global::System.Web.UI.WebControls.Button butAddExpenseMaster;
         
         /// <summary>
         /// lblMessage control.
@@ -85,12 +85,12 @@ namespace UCM.Finance {
         protected global::System.Web.UI.WebControls.Label lblSearchResult;
         
         /// <summary>
-        /// gridNatureOfExp control.
+        /// gridExpMaster control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridNatureOfExp;
+        protected global::System.Web.UI.WebControls.GridView gridExpMaster;
     }
 }
