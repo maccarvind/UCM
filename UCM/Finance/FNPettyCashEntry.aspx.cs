@@ -94,6 +94,12 @@ namespace UCM.Finance
 
         protected void butCashIn_Click(object sender, EventArgs e)
         {
+            if (txtTranDate.Text != string.Empty)
+            {
+                lblCashInMessage.Text = "Kindly Select a Date";
+                return;
+            }
+
             if ((dropCashInCompany.SelectedValue == string.Empty) || (DataFormatter.SafeDouble(txtCashInAmount.Text) < 0))
             {
                 lblCashInMessage.Text = "Kindly input all the fields.";
@@ -128,6 +134,12 @@ namespace UCM.Finance
 
         protected void butCashOut_Click(object sender, EventArgs e)
         {
+            if (txtTranDate.Text != string.Empty)
+            {
+                lblCashInMessage.Text = "Kindly Select a Date";
+                return;
+            }
+
             if ((dropCashOutCompany.SelectedValue == string.Empty) ||
                 (dropHeadOfExp.SelectedValue == string.Empty) ||
                 (dropNatureOfExp.SelectedValue == string.Empty) ||
