@@ -189,6 +189,7 @@
     <Content Include="plugins\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="plugins\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="plugins\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="SQLScripts\sp.sql" />
     <Content Include="UCMLogged.Master" />
     <Content Include="packages.config" />
     <None Include="Properties\Settings.settings">
