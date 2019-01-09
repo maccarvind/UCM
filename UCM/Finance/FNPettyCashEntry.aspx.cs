@@ -94,7 +94,7 @@ namespace UCM.Finance
 
         protected void butCashIn_Click(object sender, EventArgs e)
         {
-            if (txtTranDate.Text != string.Empty)
+            if (txtTranDate.Text == string.Empty)
             {
                 lblCashInMessage.Text = "Kindly Select a Date";
                 return;
@@ -134,7 +134,7 @@ namespace UCM.Finance
 
         protected void butCashOut_Click(object sender, EventArgs e)
         {
-            if (txtTranDate.Text != string.Empty)
+            if (txtTranDate.Text == string.Empty)
             {
                 lblCashInMessage.Text = "Kindly Select a Date";
                 return;

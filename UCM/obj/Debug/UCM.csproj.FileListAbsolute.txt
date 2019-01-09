@@ -1,0 +1,12 @@
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCM\obj\Debug\UCM.csprojResolveAssemblyReference.cache
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCM\bin\UCM.dll.config
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCM\bin\UCM.dll
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCM\bin\UCM.pdb
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCM\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCM\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCM\bin\UCMHelper.dll
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCM\bin\UCMHelper.pdb
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCM\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCM\bin\Microsoft.Practices.EnterpriseLibrary.Data.xml
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCM\obj\Debug\UCM.dll
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCM\obj\Debug\UCM.pdb

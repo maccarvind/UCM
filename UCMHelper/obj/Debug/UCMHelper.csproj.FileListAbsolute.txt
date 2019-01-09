@@ -1,0 +1,10 @@
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCMHelper\bin\Debug\UCMHelper.dll.config
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCMHelper\bin\Debug\UCMHelper.dll
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCMHelper\bin\Debug\UCMHelper.pdb
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCMHelper\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCMHelper\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCMHelper\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCMHelper\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCMHelper\obj\Debug\UCMHelper.csprojResolveAssemblyReference.cache
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCMHelper\obj\Debug\UCMHelper.dll
+C:\Users\LS3\Source\Repos\maccarvind\UCM\UCMHelper\obj\Debug\UCMHelper.pdb
