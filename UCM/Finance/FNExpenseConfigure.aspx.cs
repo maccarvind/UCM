@@ -22,13 +22,6 @@ namespace UCM.Finance
 
         private void initializeForm()
         {
-            //UCMFinance finOps = new UCMFinance();
-
-            //dropHeadExpense.DataSource = finOps.GetExpenseHeads();
-            //dropHeadExpense.DataValueField = "ID";
-            //dropHeadExpense.DataTextField = "ExpName";
-            //dropHeadExpense.DataBind();
-
             dropExpType.Items.Add(new ListItem("HEAD", "HEAD"));
             dropExpType.Items.Add(new ListItem("NATURE", "NATURE"));
             dropExpType.Items.Insert(0, new ListItem("- Select -", ""));
@@ -69,7 +62,7 @@ namespace UCM.Finance
 
             if (DataFormatter.SafeInt(hidExpID.Value) <= 0)
             {
-                finOps.AddUpdateExpense("ADD", default(int), dropExpType.SelectedValue, txtExpMasterName.Text.Trim(),  ref retVal);
+                finOps.AddUpdateExpense("ADD", default(int), dropExpType.SelectedValue, txtExpMasterName.Text.Trim(), ref retVal);
 
                 lblMessage.Text = "Expense Details Added Successfully.";
             }
@@ -80,10 +73,16 @@ namespace UCM.Finance
                 lblMessage.Text = "Expense Details Update Successfully.";
             }
 
+
             if (retVal != string.Empty)
+            {
                 lblMessage.Text = "Expense Details Already Present.";
+            }
             else
+            {
+                hidExpID.Value = string.Empty;
                 dropExpType_SelectedIndexChanged(sender, e);
+            }
         }
 
 
